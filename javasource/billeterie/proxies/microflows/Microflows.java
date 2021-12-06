@@ -15,6 +15,13 @@ import com.mendix.systemwideinterfaces.core.IMendixObject;
 public class Microflows
 {
 	// These are the microflows for the Billeterie module
+	public static void ajoutPanier(IContext context, billeterie.proxies.Billet _billet, billeterie.proxies.Panier _panier)
+	{
+		Map<java.lang.String, Object> params = new HashMap<>();
+		params.put("Billet", _billet == null ? null : _billet.getMendixObject());
+		params.put("Panier", _panier == null ? null : _panier.getMendixObject());
+		Core.microflowCall("Billeterie.ajoutPanier").withParams(params).execute(context);
+	}
 	public static java.math.BigDecimal calculTTC(IContext context, billeterie.proxies.Billet _entity)
 	{
 		Map<java.lang.String, Object> params = new HashMap<>();
